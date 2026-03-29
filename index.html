@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+  <head>
+    <title>VIBGYOR ENTERPRISES</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <header class="navbar">
+      <div class="logo">VIBGYOR ENTERPRISES</div>
+
+      <nav>
+        <a href="#" onclick="showSection('home')">Home</a>
+        <a href="#" onclick="showSection('about')">About</a>
+        <a href="#" onclick="showSection('products')">Products</a>
+        <a href="#" onclick="showSection('download')">Download</a>
+        <a href="#" onclick="showSection('contact')">Contact</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-left">
+        <span class="tag">Andhra Pradesh's Trusted Retail Tech Partner</span>
+
+        <h1>
+          YOUR TRUSTED PARTNER IN <br />
+          <span class="gradient-text">RETAIL TECHNOLOGY</span>
+        </h1>
+
+        <p>
+          VIBGYOR ENTERPRISES supplies cutting-edge POS systems, billing
+          solutions, barcode technology, and weighing equipment.
+        </p>
+
+        <div class="buttons">
+          <button class="primary" onclick="showSection('products')">
+            Explore Products
+          </button>
+          <button class="secondary" onclick="showSection('contact')">
+            Find Dealer
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="product-card">
+          <img src="images/pos1.jpg" />
+          <p>ProTouch POS</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2>About Us</h2>
+      <p>We provide high-quality POS and weighing machine solutions.</p>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products">
+      <h2>Our Products</h2>
+
+      <div class="categories">
+        <button onclick="showProducts('pos')">POS</button>
+        <button onclick="showProducts('bill')">Bill Printers</button>
+        <button onclick="showProducts('barcode')">Barcode Printers</button>
+        <button onclick="showProducts('scanner')">Barcode Scanners</button>
+        <button onclick="showProducts('weight')">Weigh Machines</button>
+      </div>
+
+      <div id="productDisplay"></div>
+    </section>
+
+    <!-- DOWNLOAD -->
+    <section id="download">
+      <h2>Downloads</h2>
+      <p>Brochures coming soon.</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2>Dealer Locations</h2>
+
+      <div class="dealers">
+        <ul>
+          <li>Vijayawada - S-Mani Systems</li>
+          <li>Guntur - Bharat Weighing</li>
+          <li>Vizag - Honnesha Solutions</li>
+          <li>Rajahmundry - GK Technologies</li>
+          <li>Ongole - RS Computers</li>
+          <li>Tirupathi - RK Solutions</li>
+          <li>Hyderabad - Coming Soon</li>
+        </ul>
+      </div>
+
+      <div class="Reach out us at"></div>
+      <h2>Vibgyor Contact Info</h2>
+      <ul>
+        <li>Mobile No: 999XXXXXXX</li>
+        <li>Email us at XXXX@gmail.com</li>
+      </ul>
+    </section>
+
+    <!-- LEAD POPUP -->
+    <div id="mobilePopup" class="popup">
+      <div class="popup-content">
+        <h3>Enter Details</h3>
+
+        <input type="text" id="mobileInput" placeholder="Mobile Number" />
+        <input type="email" id="emailInput" placeholder="Email Address" />
+
+        <button onclick="submitDetails()">Submit</button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

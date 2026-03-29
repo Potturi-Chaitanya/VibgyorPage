@@ -16,6 +16,56 @@ function showSection(sectionId) {
   }
 }
 
+// 🔥 FINAL SUBMIT FUNCTION
+async function submitDetails() {
+  let mobile = document.getElementById("mobileInput").value;
+  let email = document.getElementById("emailInput").value;
+
+  let mobileValid = /^[0-9]{10}$/.test(mobile);
+  let emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+  if (!mobileValid) {
+    alert("Enter valid mobile number");
+    return;
+  }
+
+  if (!emailValid) {
+    alert("Enter valid email");
+    return;
+  }
+
+  try {
+    console.log("Sending data:", mobile, email);
+
+    let response = await fetch("https://vibgyorpage.onrender.com/saveLead", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ mobile, email }),
+    });
+
+    if (!response.ok) {
+      throw new Error("Server error");
+    }
+
+    let data = await response.json();
+
+    console.log("Saved:", data);
+
+    isSubmitted = true;
+
+    document.getElementById("mobilePopup").style.display = "none";
+
+    // 🔥 Navigate to products
+    showSection("products");
+  } catch (error) {
+    console.error("Error:", error);
+    alert("Error connecting to server");
+  }
+}
+
+// Products display
 function showProducts(category) {
   const display = document.getElementById("productDisplay");
 
@@ -42,48 +92,7 @@ function showProducts(category) {
   });
 }
 
-async function submitDetails() {
-  let mobile = document.getElementById("mobileInput").value;
-  let email = document.getElementById("emailInput").value;
-
-  let mobileValid = /^[0-9]{10}$/.test(mobile);
-  let emailValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-
-  if (!mobileValid) {
-    alert("Enter valid mobile number");
-    return;
-  }
-
-  if (!emailValid) {
-    alert("Enter valid email");
-    return;
-  }
-
-  try {
-    let response = await fetch("https://vibgyorpage.onrender.com/saveLead", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ mobile, email }),
-    });
-
-    // 🔴 Important: check response properly
-    if (!response.ok) {
-      throw new Error("Server error");
-    }
-
-    let data = await response.json();
-
-    console.log("Saved:", data);
-
-    // ✅ CLOSE POPUP
-    document.getElementById("mobilePopup").style.display = "none";
-    alert("Going to products");
-    // ✅ NAVIGATE TO PRODUCTS
-    showSection("products");
-  } catch (error) {
-    console.error("Error:", error);
-    alert("Error saving data");
-  }
-}
+// Default load
+window.onload = function () {
+  showSection("home");
+};

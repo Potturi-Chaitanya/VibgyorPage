@@ -57,7 +57,7 @@ app.post("/adminLogin", (req, res) => {
   const { username, password } = req.body;
 
   // 🔐 Simple credentials (we can improve later)
-  if (username === "admin" && password === "1234") {
+  if (username === "Vibgyor" && password === "Retail@123") {
     res.json({ success: true });
   } else {
     res.json({ success: false });

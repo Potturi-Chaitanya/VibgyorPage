@@ -60,13 +60,16 @@ async function submitDetails() {
   }
 
   try {
-    let response = await fetch("http://localhost:3000/saveLead", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
+    let response = await fetch(
+      "https://vibgyor-backend.onrender.com/saveLead",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ mobile, email }),
       },
-      body: JSON.stringify({ mobile, email }),
-    });
+    );
 
     // 🔴 Important: check response properly
     if (!response.ok) {

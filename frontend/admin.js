@@ -1,3 +1,7 @@
+// 🔐 Protect page
+if (localStorage.getItem("adminAuth") !== "true") {
+  window.location.href = "login.html";
+}
 let allLeads = [];
 
 async function loadLeads() {
@@ -31,6 +35,10 @@ function filterLeads() {
   );
 
   displayLeads(filtered);
+}
+function logout() {
+  localStorage.removeItem("adminAuth");
+  window.location.href = "login.html";
 }
 
 // Auto refresh every 10 sec

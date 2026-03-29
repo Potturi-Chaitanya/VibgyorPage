@@ -52,3 +52,14 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log("Server running on port", PORT);
 });
+
+app.post("/adminLogin", (req, res) => {
+  const { username, password } = req.body;
+
+  // 🔐 Simple credentials (we can improve later)
+  if (username === "admin" && password === "1234") {
+    res.json({ success: true });
+  } else {
+    res.json({ success: false });
+  }
+});

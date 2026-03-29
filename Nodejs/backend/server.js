@@ -4,17 +4,16 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 
-// MongoDB connection
+// 🔥 Connect MongoDB
 mongoose
   .connect(process.env.MONGO_URL)
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.log(err));
 
-// Schema
+// 🔥 Schema
 const leadSchema = new mongoose.Schema({
   mobile: String,
   email: String,
@@ -26,32 +25,28 @@ const leadSchema = new mongoose.Schema({
 
 const Lead = mongoose.model("Lead", leadSchema);
 
-// Save Lead API
+// 🔥 Save Lead
 app.post("/saveLead", async (req, res) => {
   const { mobile, email } = req.body;
-
-  if (!mobile || !email) {
-    return res.status(400).json({ message: "Missing data" });
-  }
 
   try {
     const newLead = new Lead({ mobile, email });
     await newLead.save();
 
-    res.json({ message: "Lead saved successfully" });
+    res.json({ message: "Saved to MongoDB" });
   } catch (err) {
     console.log(err);
-    res.status(500).json({ message: "Error saving lead" });
+    res.status(500).json({ message: "Error" });
   }
 });
 
-// Get Leads API
+// 🔥 Get Leads
 app.get("/leads", async (req, res) => {
   const leads = await Lead.find();
   res.json(leads);
 });
 
-// Port fix (IMPORTANT)
+// 🔥 PORT FIX
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {

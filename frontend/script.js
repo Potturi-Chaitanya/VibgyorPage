@@ -102,3 +102,5 @@ function showProducts(category) {
 window.onload = function () {
   showSection("home");
 };
+
+res.send("Saved successfully");

@@ -34,6 +34,12 @@ async function submitDetails() {
     return;
   }
 
+  function submitDetails() {
+    console.log("Submit clicked"); // 🔥 debug
+
+    // your code...
+  }
+
   try {
     console.log("Sending data:", mobile, email);
 
